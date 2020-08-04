@@ -114,7 +114,7 @@ sorted_btwnCent=sorted(btwnCent_classes.items(),key=operator.itemgetter(1),rever
 # # print(sorted_btwnCent)
 
 
-##1
+##1 Find out how many students every other student is exposed to. Specifically, find the average/maximum number of students that one may be exposed to.
 P_degree=[]
 for i in P:
     P_degree.append(P.degree(i))
@@ -123,7 +123,7 @@ print("\nP_degree = ", P_degree, file=f)
 print("\nmax : ",max(P_degree),file=f)
 print("\nmean : ",np.mean(P_degree),file=f)
 
-##2
+##2 Find courses with a high degree of centrality
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 Cent1=pd.DataFrame(sorted_degCent,columns=["Classes","degCent"])
@@ -138,7 +138,7 @@ Cent=Cent.set_index("Classes")
 print("\n\n\nAnswer 2:",file=f)
 print("\n",Cent,file=f)
 
-##3
+##3 What is the average number of students per class?
 classes_nodes={i for i,j in G.nodes(data=True) if j["bipartite"]==1}
 classes_degree={}
 for i in classes_nodes:
@@ -147,7 +147,7 @@ print("\n\n\nAnswer3:",file=f)
 print("\nclasses degree : ", classes_degree,file=f)
 print("\naverage of classes degree : ",np.mean(list(classes_degree.values())),file=f)
 
-##4
+##4 What is the maximum number of classes that are held in one classroom on a given day (e.g., on Monday, how many students are going to be sitting in the same classroom throughout the whole day)?
 Rooms_Dates={}
 Rooms_Dates=defaultdict(list)
 for i in file:
@@ -204,7 +204,7 @@ df_Rooms_Dates["Thursday"].idxmax(),"and the flow rate is ",max(df_Rooms_Dates["
 print("\nMaximum flow rate on Friday is in the classroom ",
 df_Rooms_Dates["Friday"].idxmax(),"and the flow rate is ",max(df_Rooms_Dates["Friday"]),file=f)
 
-##5
+##5  Kuch center for students who have extra time between the morning and afternoon classes.
 M={}
 T={}
 W={}
@@ -268,7 +268,7 @@ for i in F:
 print("\n\n\nExtra time to have lunch at school on work days (Yes or No):","\nMonday:\n",Lunch_M,
 "\nTuesday:\n",Lunch_T,"\nWednesday:\n",Lunch_W,"\nThursday:\n",Lunch_R,"\nFriday:\n",Lunch_F,file=f)
 
-##6
+##6 How many students are connected directly and connected in total to find out the importance of the course in terms of virus transmission?
 connect_directly=len(P.edges())
 print("\n\n\nAnswer6:",file=f)
 print("\nthe pair of students connecting directly:\n",connect_directly,file=f)
@@ -278,7 +278,7 @@ for i in P_components:
     total=total+length*(length-1)/2
 print("\nthe pair of students connecting in total:\n",total,file=f)
 
-##7
+##7 Make the shortest path long enough so that the virus transmission is going to slow down (by switching classes to fully online?)
 G_test=G.copy()
 G_test.remove_node("FT100/Lecture/1")
 G_test.remove_node("FA102L/Lecture/1")
@@ -290,7 +290,7 @@ print("\n\n\nAnswer7:",file=f)
 print("\n Clustering before removing the high centrality class:\n",nx.average_clustering(P),file=f)
 print("\n Clustering after removing the high centrality class:\n",nx.average_clustering(P_test),file=f)
 
-##8
+##8 How many classes must go online to reduce the possibility of virus transmission? Students from different majors should work (accounting?) Limit the virus in small groups (majors) by moving the inter-major classes online.
 G_components=sorted(nx.connected_components(G))
 node_cut=[]
 for i in G_components:
