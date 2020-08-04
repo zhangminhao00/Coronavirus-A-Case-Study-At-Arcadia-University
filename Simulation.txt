@@ -1,0 +1,25 @@
+Assuming default R0 value is 3.2 (SEIR model), after 15 weeks in the fall semester, the total amount of infected students will be  456
+
+
+
+After removing five classes with highest centrality, the expected value of R0 will decrease by 7.077067669172932 percentage 
+R0 value decreases from 3.2(default) to 2.9735338345864664
+The total amount of infected students will decrease to 364
+
+
+After removing ten classes with highest centrality, the expected value of R0 will decrease by 11.259398496240603 percentage 
+R0 value decreases from 3.2(default) to 2.839699248120301
+The total amount of infected students will decrease to 316
+
+
+After opening the dining hall(assuming all possible students will have lunch in the dining hall),
+the expected value of R0 will increase by 2669.7126745435016 percentage 
+R0 value increases from 3.2(default) to 88.63080558539205
+In this case, almost all the students will be infected
+
+
+
+After closing classrooms with highest flow rate each day(simply assuming students in the same room are connected each day),
+the expected value of R0 will increase by 38.62637576323261 percentage 
+R0 value decreases from 3.2(default) to 1.9639559755765568
+The total amount of infected students will decrease to 115
